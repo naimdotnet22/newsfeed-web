@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <form [formGroup]="formValue" (ngSubmit)="onCreate()">
+    <div class="mb-3">
+      <label class="form-label">Author</label>
+      <input formControlName="author" type="text" class="form-control" placeholder="Enter Author Name">
+      <small *ngIf="author.errors?.required && author.touched" class="text-danger">Author is Required!</small>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input formControlName="title" type="text" class="form-control" placeholder="Enter Title">
+      <small *ngIf="title.errors?.required && title.touched" class="text-danger">Title is Required!</small>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Date</label>
+      <input formControlName="publishedAt" type="date" class="form-control">
+      <small *ngIf="publishedAt.errors?.required && publishedAt.touched" class="text-danger">Date is Required!</small>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea formControlName="description" class="form-control" rows="3" placeholder="News Details"></textarea>
+      <small *ngIf="description.errors?.required && description.touched" class="text-danger">Description is Required!</small>
+    </div>
+
+    <div class="mb-3">
+      <select formControlName="category" class="form-select" aria-label="Default select example">
+        <option value="1">US</option>
+        <option value="2">World</option>
+        <option value="3">Science</option>
+        <option value="4">Arts</option>
+      </select>
+    </div>
+
+    <app-upload-img (onUploadFinished)="uploadFinished($event)"></app-upload-img>
+
+    <div class="d-grid mb-5">
+      <button [disabled]="!formValue.valid" class="btn btn-dark" type="submit">Create</button>
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,15 @@
+<div class="container mt-5">
+    <div class="form-group mb-4">
+        <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+            [(ngModel)]="searchText" placeholder="Enter text to search based on title" autofocus>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let obj of data.data | appFilter: searchText" class="col-md-4 mb-4">
+            <img [src]="createImgPath(obj.urlImage)" alt="Image" width="100%">
+            <h3>{{obj.title}}</h3>
+            <p style="text-align: justify;">{{obj.description}}</p>
+            <a class="btn btn-sm btn-dark">Read more</a>
+        </div>
+    </div>
+</div>
